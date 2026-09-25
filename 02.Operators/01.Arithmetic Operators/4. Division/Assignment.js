@@ -16,3 +16,31 @@ let totalMoney=72000;
 let departments=9;
 let eachDepartments=totalMoney/departments;
 console.log(`the money each depertment get is ${eachDepartments}`)
+
+//4
+let a = "20";
+let b = 4;
+let result1 = a / b;
+console.log(result1);//5
+
+//5
+let x = "100";
+let y = "5";
+let result2 = x / y;
+console.log(result2);//20
+
+//6
+let p = 10;
+let q = 0;
+let result3 = p / q;
+console.log(result3);//Infinity
+
+//7
+let m = -10;
+let n = 0;
+let result = m / n;
+console.log(result);//-Infinity
+
+//8
+let val = 0 / 0;
+console.log(val);//NaN
