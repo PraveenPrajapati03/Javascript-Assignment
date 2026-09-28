@@ -1,3 +1,5 @@
+//typeof Operator
+//Part a:
 //1
 let name = "Rahul";
 console.log(typeof(name))
@@ -16,6 +18,7 @@ console.log(typeof(city))
 //5
 console.log(typeof(null))
 
+//Part b:
 //6
 console.log(typeof 42); //number
 console.log(typeof "Hello"); //string
@@ -45,6 +48,7 @@ let value = null;
 console.log(typeof value);
 console.log(typeof value === "object");  //Object  true
 
+//Part c:
 //11
 console.log(typeof typeof 100);   //String
 console.log(typeof typeof "Hi");  //String
