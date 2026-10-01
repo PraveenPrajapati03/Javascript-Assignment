@@ -82,14 +82,10 @@ switch(character){
 let season = 1;
 switch(season){
     case 1:
-        console.log("Winter")
-        break;
     case 2:
         console.log("Winter")
         break;    
-    case 3:
-        console.log("Summer")
-        break;    
+    case 3:  
     case 4:
         console.log("Summer")
         break;
