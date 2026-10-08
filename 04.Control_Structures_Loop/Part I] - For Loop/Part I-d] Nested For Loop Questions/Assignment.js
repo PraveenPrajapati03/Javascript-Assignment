@@ -81,3 +81,30 @@ for (let i=1;i<=5;i++) {
     }
     console.log(row8);
 }
+
+//9
+for (let i=1;i<=5;i++) {
+    let row9 = "";
+    for (let j=1;j<=5;j++) {
+        if (j==i){
+            row9+="  ";
+        }else {
+            row9+="* ";
+        }
+    }
+    console.log(row9);
+}
+
+//10
+for (let i=1;i<=5;i++) {
+    let row10 = "";
+    for (let j=1;j<=10;j++){
+        if (i*j%2==0){
+            row10+=i*j+" ";
+        }else {
+            row10+="  ";
+        }
+    }
+    console.log(row10);
+}
+
