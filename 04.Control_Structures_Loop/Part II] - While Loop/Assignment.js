@@ -88,10 +88,11 @@ if (onum9==rnum9){
 }
 
 //10
-let n = 13;
+let num10 = 13;
 let binary = "";
-for (; n > 0; n = Math.floor(n / 2)) {
-    let rem = n % 2;
-    binary = rem + binary;
+while (num10 > 0) {
+    let remainder = num10 % 2;
+    binary = remainder + binary;
+    num10 = Math.floor(num10 / 2);
 }
 console.log(binary);
