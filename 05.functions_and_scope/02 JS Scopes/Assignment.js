@@ -386,3 +386,313 @@ console.log(price);
 // first `console.log()` function print undefined
 // final `console.log()` funtion print 100
 // The hoisting make the first `console.log()` statement, print undefined instead of 100
+
+
+// Section 8: Function Declaration Hoisting (5 Questions)
+// 36
+sayHello();
+function sayHello() {
+    console.log("Hello from CodingGita");
+}
+// Output==>Hello from CodingGita
+// This works because of function hoisting in JavaScript.
+// Function hoisting means that JavaScript makes function declarations available before the code executes, allowing you to call a function before its declaration appears in the code.
+
+// 37
+display();
+function display() {
+    console.log("Function is hoisted completely");
+}
+// Output==>Function is hoisted completely
+// The function can be called before its declaration.	|   The variable can be accessed before its assignment.
+// The entire function is available.	                    |   Only the declaration is hoisted; the assigned value is not.
+// Calling it works before the declaration.         	    |   Accessing it before assignment returns undefined.
+
+// 38
+greet();
+var greet = function() {
+    console.log("Hi");
+};
+// Yes, because The variable can be accessed before its assignment.Only the declaration is hoisted; the assigned value is not.Accessing it before assignment returns undefined.
+
+// 39
+console.log(typeof myFunc);
+function myFunc() {
+    return "I am hoisted";
+}
+console.log(myFunc());
+// Output==>function
+// I am hoisted
+
+// 40
+var message = "Hello from CodingGita!";
+sayHello();
+function sayHello() {
+    console.log(message);
+}
+
+
+// Section 9: Scope Chain (5 Questions)
+// 41
+var institute = "CodingGita";
+function department() {
+    var dept = "CSE";
+    function batch() {
+        var year = 2025;
+        console.log(year);
+        console.log(dept);
+        console.log(institute);
+    }
+    batch();
+}
+department();
+// Output==>2025 CSE CodingGita
+// process
+// JavaScript looks inside the current scope
+// If not found, goes to the next outer scope
+// Continues until global scope
+// If not found anywhere → error
+
+// 42
+var globalVar2 = "I am global";
+function outer() {
+    var outerVar = "I am outer";
+    function inner() {
+        console.log(globalVar2);
+        console.log(outerVar);
+        console.log(innerVar); // this line
+    }
+    inner();
+}
+outer();
+// give ReferenceError: innerVar is not defined because innerVar is not defined
+
+// 43
+var a = 1;
+function level1() {
+    var b = 2;
+    function level2() {
+        var c = 3;
+        function deep() {
+            console.log(a, b, c);
+        }
+        deep();
+    }
+    level2();
+}
+level1();
+// all variable accessible inside deep() function JavaScript uses lexical scoping, 
+// which means a function can access variables declared in its own scope and in the outer scopes where it was defined.
+
+// 44
+var x = "global";
+function first() {
+    var x = "first";
+    function second() {
+        console.log(x);
+    }
+    second();
+}
+first();
+console.log(x);
+// Output==>first global
+// First console.log(x) inside second(): JavaScript looks for x inside second(). It doesn't find one. It checks the outer scope, first(), where x = "first". Therefore, it prints first.
+// Second console.log(x) outside first(): JavaScript looks for x in the global scope. The global variable has the value "global". Therefore, it prints global.
+
+// 45
+var globalVar1 = "Global Scope";
+function outer() {
+    var outerVar = "Outer Function";
+    function middle() {
+        var middleVar =  "Middle Function";
+        function inner() {
+            var innerVar = "Inner Function";
+            console.log(innerVar);
+            console.log(middleVar);
+            console.log(outerVar);
+            console.log(globalVar1);
+        }
+        inner();
+    }
+    middle();
+}
+outer();
+
+
+// Section 10: Variable Shadowing (5 Questions)
+// 46
+var score = 50;
+function test() {
+    var score = 90;
+    console.log(score);
+}
+test();
+console.log(score);
+// Output==>90 50
+// A local variable can override a global variable with the same name.
+// The inner value does not overwrite the outer value; it only hides it inside the function.
+
+// 47
+var name = "Global Name";
+function show() {
+    var name = "Local Name";
+    console.log(name);
+}
+show();
+console.log(name);
+// Output==>Local Name  Global Name
+// Not, local variable does not change global variable because A local variable can override a global variable with the same name.
+// The inner value does not overwrite the outer value; it only hides it inside the function.
+
+// 48
+var value = 10;
+function update() {
+    value = 20;          // no var
+    console.log(value);
+}
+update();
+console.log(value);
+// Output==>20 20
+// in the previous question the local variable can override global variable with the same name do not upadate inner loop variable execute inside only not at outside.
+// but in this value of value variable is updated inside function that reason outside printed new value.
+
+// 49
+var color = "Blue";
+function changeColor() {
+    var color = "Red";
+    console.log("Inside:", color);
+}
+changeColor();
+console.log("Outside:", color);
+// Output==>Inside: Red
+// Output==>Outside: Blue
+
+// 50
+var marks = 70;
+function inner(){
+    marks = 95;
+    console.log(marks)
+}
+inner();
+console.log(marks);
+
+
+// Section 11: Nested Functions (5 Questions)
+// 51
+function outer() {
+    var teacher = "Kartik Sir";
+    function inner() {
+        var student = "Jenil";
+        console.log(student);
+        console.log(teacher);
+    }
+    inner();
+}
+outer();
+// Output==>Jenil  Kartik Sir
+// No, you cannot directly access teacher or student outside outer() because both variables are declared inside functions.
+
+// 52
+function parent() {
+    var a = "Parent";
+    function child() {
+        var b = "Child";
+        function grandchild() {
+            var c = "Grandchild";
+            console.log(a);
+            console.log(b);
+            console.log(c);
+        }
+        grandchild();
+    }
+    child();
+}
+parent();
+// Output==>Parent  Child  Grandchild
+// a: JavaScript searches the grandchild() scope, then child(), and finally finds a in parent().
+// b: JavaScript searches the inner scopes and finds b in child().
+// c: JavaScript finds c directly in grandchild().
+
+// 53
+function outer() {
+    var secret = "Hidden";
+    function inner() {
+        console.log(secret);
+    }
+}
+inner();
+outer();
+// ReferenceError: inner is not defined
+// JavaScript mein function ki declaration aur uski accessibility alag concepts hain.
+// inner() ko outer() ke andar define karne se woh automatically global scope mein available nahi hota. Ye lexical scope ka rule hai.
+
+// 54
+function createMessage() {
+    var greeting = "Hello";
+    function show() {
+        console.log(greeting + " students");
+    }
+    return show;
+}
+var messageFunc = createMessage();
+messageFunc();
+// Output==>Hello students
+// because JavaScript searches the inner scopes and finds greeting in createMessage function.
+
+// 55
+function studentInfo() {
+    var name = "praveen";
+    var course = "B.Tech CSE (AI)";
+    function display() {
+        console.log("Name:", name);
+        console.log("Course:", course);
+    }
+    display();
+}
+studentInfo();
+
+
+// Section 12: Common Errors with var (5 Questions)
+// 56
+function test() {
+    x = 100; // missing var
+}
+test();
+console.log(x);
+// missing of var 
+// In JavaScript's non-strict mode, assigning a value to an undeclared variable creates a property on the global object in typical browser environments.
+// The variable x was probably intended to be local to test(), but it becomes globally accessible instead.
+
+// 57
+if (true) {
+    var x = 20;
+}
+console.log(x);
+// Output==>20
+// because var is function-scoped, not block-scoped.
+// Beginners often assume that curly braces {} always create a separate scope. However, var does not follow block scope.
+
+// 58
+console.log(a); // undefined
+var a = 10;
+// JavaScript moves variable declarations to the top of their scope before executing code.
+// But only the declaration is moved, not the assignment.
+
+// 59
+var x = 10;
+var x = 20;
+console.log(x);
+// no issue inside code
+// var is allowed redeceration and reassignment
+// var allows redeclaration in the same scope, which can cause accidental overwrites. 
+// Prefer let for reassigned variables and const for variables that should not be reassigned.
+
+// 60
+function calculate() {
+    var total = 0;
+    for (var i = 1; i <= 5; i++) {
+        total = total + i;
+    }
+    console.log(total);
+}
+calculate();
