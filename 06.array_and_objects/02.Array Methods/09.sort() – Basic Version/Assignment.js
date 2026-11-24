@@ -1,7 +1,7 @@
 // Q1
-let students = ["Arjun", "Jenil", "Mahir", "Krishna","Anil"];
-students.sort();
-console.log(students);
+let students = ["Arjun", "Jenil", "Mahir", "Krishna","Anil"]
+students.sort()
+console.log(students)
 
 // Q2
 let arr = ["Dog", "Cat", "Elephant", "Ant"]
